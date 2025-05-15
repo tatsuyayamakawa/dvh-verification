@@ -5,20 +5,24 @@ import photo from "./assets/after.jpg";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
-export default function AfterPage() {
-  const [viewHeight, setViewHeight] = useState<string>("100dvh");
+// カスタムフックを作成してロジックを分離
+function useInitialViewHeight(): string {
+  // 初期値も計算済みの値を使用してちらつきを防止（初期レンダリングで使用）
+  const [viewHeight, setViewHeight] = useState<string>("calc(100dvh - 48px)");
 
   useEffect(() => {
-    // 初回レンダリング時にデバイスの高さを計算し、ヘッダーの高さを引く
-    const calculateHeight = () => {
-      const height = window.innerHeight;
-      setViewHeight(`${height}px`);
-    };
-
-    calculateHeight();
-    // コンポーネントがマウントされた時のみ実行
+    // 初回レンダリング時にのみ高さを計算
+    // CSS変数の100dvhはモバイルでスクロール時に変動することがあるため
+    // window.innerHeightで固定値をピクセル単位で取得して再計算を防止
+    const height = window.innerHeight;
+    setViewHeight(`${height}px`);
+    // 空の依存配列で初回レンダリング時のみ実行
   }, []);
+  return viewHeight;
+}
 
+export default function AfterPage() {
+  const viewHeight = useInitialViewHeight();
   return (
     <main>
       <div

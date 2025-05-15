@@ -1,6 +1,6 @@
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import photo from "./assets/before.jpg";
-import { ChevronDown } from "lucide-react";
 
 export default function BeforePage() {
   return (
