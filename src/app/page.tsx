@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <Button variant="link" size="lg" asChild>
           <a
-            href="https://qiita.com/kazumai/items/90000000000000000000000000000000"
+            href="https://qiita.com/tatsuyayamakawa/items/8a43f1d87815d7e8e112"
             target="_blank"
             rel="noopener noreferrer"
           >
