@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 export default function BeforePage() {
   return (
     <main>
-      <div className="relative h-dvh">
+      <div className="relative h-[calc(100dvh-48px)] mt-12">
         <Image
           src={photo}
           alt=""

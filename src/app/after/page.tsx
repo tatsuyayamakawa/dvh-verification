@@ -6,23 +6,24 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function AfterPage() {
-  const [deviceHeight, setDeviceHeight] = useState<number>(0);
+  const [viewHeight, setViewHeight] = useState<string>("100dvh");
 
   useEffect(() => {
-    // 初回レンダリング時にデバイスの高さを計算
+    // 初回レンダリング時にデバイスの高さを計算し、ヘッダーの高さを引く
     const calculateHeight = () => {
-      const vh = window.innerHeight;
-      setDeviceHeight(vh);
+      const height = window.innerHeight;
+      setViewHeight(`${height}px`);
     };
 
     calculateHeight();
+    // コンポーネントがマウントされた時のみ実行
   }, []);
 
   return (
     <main>
       <div
-        className="relative"
-        style={{ height: deviceHeight ? `${deviceHeight}px` : "h-dvh" }}
+        className="relative mt-12"
+        style={{ height: `calc(${viewHeight} - 48px)` }}
       >
         <Image
           src={photo}
