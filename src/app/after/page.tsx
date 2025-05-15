@@ -33,6 +33,7 @@ export default function AfterPage() {
           src={photo}
           alt=""
           priority
+          placeholder="blur"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 flex items-center justify-center z-10 text-white text-4xl font-bold text-shadow-lg">
